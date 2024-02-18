@@ -1,5 +1,0 @@
-PATIENT: age, company, city, district, vision_defect
-
-TEST_TUBE: id, patientId
-
-RACK: id, [test_tube, test_tube]

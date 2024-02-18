@@ -1,43 +1,47 @@
 export type Patient = {
-    age: number
-    company: string
-    city: string
-    district: string
-    visionDefect: string
-}
+  id: string;
+  name: string;
+  email: string;
+  age: number;
+  company: string;
+  city: string;
+  district: string;
+  visionDefect: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
 export type TestTube = {
-    id: string
-    patient: Patient
-}
+  id: string;
+  description: string;
+  patientId: string;
+};
 
-export type Rack = TestTube[]
+export type PatientSample = {
+  sample: TestTube;
+  patient: Patient;
+};
 
-const canAssignToRack = (currentTestTube: TestTube, anyTestTube: TestTube) => {
-    const patient = currentTestTube.patient
-    const target = anyTestTube.patient
+export type Rack = {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  testSamples: TestTube[];
+};
 
-    if (patient.age === target.age ||
-        patient.company === target.company ||
-        patient.visionDefect === target.visionDefect ||
-        (patient.city === target.city && patient.district===target.district)
-    ) { 
-        return false
-    }
-    
-    return true
-}
+// const fn = (testTubes: TestTube[]) => {
+//   const racks: Rack[] = [];
 
-const fn = (testTubes: TestTube[]) => {
-    const racks: Rack[] = []
+//   testTubes.forEach((currentTestTube) => {
+//     const availableRack = racks.find((r) => {
+//       r.find(
+//         (t) =>
+//           t.id !== currentTestTube.id && canAssignToRack(currentTestTube, t)
+//       );
+//     });
 
-    testTubes.forEach(currentTestTube => {
-        const availableRack = racks.find(r => {
-            r.find(t=>t.id !==currentTestTube.id && canAssignToRack(currentTestTube,t))
-        })
-
-        if (availableRack) {
-            availableRack.push(currentTestTube)
-        }
-    })
-}
+//     if (availableRack) {
+//       availableRack.push(currentTestTube);
+//     }
+//   });
+// };

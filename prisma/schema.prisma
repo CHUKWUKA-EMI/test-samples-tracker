@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+}
+
+model Patient {
+  id           String       @id @default(cuid())
+  name         String
+  email        String      @unique
+  age          Int
+  company      String
+  city         String
+  district     String
+  visionDefect String
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model TestSample {
+  id        String   @id
+  description String
+  patientId String
+  rack Rack? @relation(fields: [rackId], references: [id])
+  rackId String?
+}
+
+model Rack {
+  id        String   @id @default(cuid())
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  testSamples TestSample[]
+}
