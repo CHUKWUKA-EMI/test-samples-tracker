@@ -21,9 +21,9 @@ An application where users will be able to create test samples and track their p
 - Clone this repository in your work directory
 - Run `npm install` to install project dependencies
 - Add a `.env` file to the root of the project
-- Create a Postgres database and add its URL to the `.env` file this way `DATABASE_URL=your_database_url` so it can be accessed as `process.env.DATABASE_URL` in the application. Refer to the `.env.example` file for the list of environment variables.
+- Create a Postgres database and add its URL to the `.env` file in this format `DATABASE_URL=your_database_url` so it can be accessed as `process.env.DATABASE_URL` in the application. Refer to the `.env.example` file for the list of environment variables.
 - Run `npx prisma migrate dev` to migrate schemas/tables to your database
-- Run `npx prisma db seed` to seed your database with some data. After that, you can run `npx prisma studio` which launches Prisma studio and opens it on your browser to enable you visualize your database tables and data
+- Run `npx prisma db seed` to seed your database with some data. After that, you can run `npx prisma studio` which launches Prisma studio and opens it in your browser to enable you visualize your database tables and data
 
 Run the development server:
 
